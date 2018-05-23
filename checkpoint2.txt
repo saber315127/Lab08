@@ -1,0 +1,30 @@
+#include <Ultrasonic.h>
+#include <LiquidCrystal.h>
+#define TRIGGER_PIN 12
+#define ECHO_PIN 13
+const byte intPin=2;
+volatile boolean state=LOW;
+LiquidCrystal lcd(15, 14, 5, 4, 3, 8); 
+Ultrasonic ultrasonic(TRIGGER_PIN, ECHO_PIN);
+void setup() {
+pinMode(intPin, INPUT_PULLUP); 
+lcd.begin(16, 2);
+attachInterrupt(2, int0, LOW);
+}
+void loop(){
+}
+void int0() { 
+float cmMsec, inMsec;
+long microsec = ultrasonic.Timing();
+cmMsec = ultrasonic.Ranging(CM);
+inMsec = ultrasonic.Ranging(INC);
+lcd.setCursor(0, 0);
+lcd.print("MS: "); 
+lcd.println(microsec);
+lcd.print(", CM: "); 
+lcd.println(cmMsec);
+lcd.setCursor(0, 1);
+lcd.print(", IN: ");
+lcd.println(inMsec);
+
+}
