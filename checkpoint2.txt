@@ -20,11 +20,12 @@ cmMsec = ultrasonic.Ranging(CM);
 inMsec = ultrasonic.Ranging(INC);
 lcd.setCursor(0, 0);
 lcd.print("MS: "); 
-lcd.println(microsec);
-lcd.print(", CM: "); 
-lcd.println(cmMsec);
+lcd.print(microsec);
 lcd.setCursor(0, 1);
+lcd.print(", CM: "); 
+lcd.print(cmMsec);
 lcd.print(", IN: ");
 lcd.println(inMsec);
 
 }
+
